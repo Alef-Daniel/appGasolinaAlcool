@@ -1,35 +1,30 @@
 import React from "react";
-import {Image, Modal, StyleSheet, Text, View} from 'react-native'
+import {Image, Modal, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 
 
 
-export default function Resultado(){
+export default function Resultado(props){
     return(
-       <View style={styles.modalContainer}>
-            <Modal transparent={false} animationType='slide' visible={true} style={styles.modal} >
+            <Modal  animationType='slide' visible={props.visible} style={styles.modal} >
                     <View style={styles.areaImg}>
                             <Image source={require('../../img/gas.png')}></Image>
                     </View>
                     
                     <View style={styles.resultado}>
-                            <Text style={{fontSize: 30, color: '#00FF00', fontWeight: 'bold', marginBottom: 20}}>Compensa usar Álcool</Text>
+                            <Text style={{fontSize: 30, color: '#00FF00', fontWeight: 'bold', marginBottom: 20}}>Compensa usar {props.resultado}</Text>
                             <Text style={{fontSize: 30, fontWeight:'bold', marginBottom: 10}}>Com os preços:</Text>
-                            <Text style={styles.titulo}>Álcool: R$4.60</Text>
-                            <Text style={styles.titulo}>Gasolina: R$7.10</Text>
+                            <Text style={styles.titulo}>Álcool: R${props.alcool}</Text>
+                            <Text style={styles.titulo}>Gasolina: R${props.gasolina}</Text>
                     </View>
+                    <TouchableOpacity style={styles.btn} onPress={props.voltar}>
+                        <Text style={{color:'#FF4500', fontSize: 20, fontWeight: 'bold' }}>Calcular novamente</Text>
+                    </TouchableOpacity>
                     </Modal>
-            </View>
     );
 }
 
 
 const styles= StyleSheet.create({
-   
-    modalContainer:{
-        backgroundColor: 'black',
-        width: '100%',
-        height: '100%'
-    },
     
     areaImg:{
         
@@ -43,5 +38,19 @@ const styles= StyleSheet.create({
     },
     titulo:{
             fontSize: 20,
+    },
+    btn:{
+        marginTop: 30,
+        margin: 60,
+        borderColor:'#FF4500',
+        alignItems: 'center',
+        borderRadius: 8,
+        padding: 5,
+        borderStartWidth : 2,
+        borderEndWidth : 2,
+        borderTopWidth : 2,
+        boderLeftWidth: 2,
+        borderRightWidth: 2,
+        borderBottomWidth : 2,
     }
 })

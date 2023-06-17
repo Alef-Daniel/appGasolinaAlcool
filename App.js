@@ -1,9 +1,25 @@
-import React from 'react';
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Modal } from 'react-native';
+import React, { useState } from 'react';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Modal, Keyboard } from 'react-native';
 import Resultado from './src/components/Resultado/Index';
 
 
 export default function App(){
+
+  const [visible, setVisible]=useState(false);
+  const[alcool, setAlcool] = useState(0);
+  const[gasolina, setGasolina] = useState(0);
+  const[resultado, setResultado] = useState('');
+
+  function calcula(){
+    
+   (alcool / gasolina < 0.7 ? setResultado('Álcool'):setResultado('Gasolina'));
+   setVisible(true);
+  }
+
+
+
+
+
   return (
 
     <View style={styles.container}>
@@ -13,15 +29,15 @@ export default function App(){
         </View>
         <View style={styles.areaInput}>
               <Text style={styles.titulo}>Álcool(preço por litro)</Text>
-              <TextInput placeholder='Ex: 4.60' style={styles.input}></TextInput>
-              <Text style={styles.titulo}>Gasolina(preço por litro)</Text>
-              <TextInput placeholder='Ex: 7.10' style={styles.input}></TextInput>
-              <TouchableOpacity style={styles.btnCalcula}>
+              <TextInput  keyboardType='numeric' placeholder='Ex: 4.60' style={styles.input} onChangeText={(valor)=>setAlcool(valor)}></TextInput>
+              <Text style={styles.titulo} >Gasolina(preço por litro)</Text>
+              <TextInput keyboardType='numeric' placeholder='Ex: 7.10' style={styles.input} onChangeText={(valor)=>setGasolina(valor)}></TextInput>
+              <TouchableOpacity style={styles.btnCalcula} onPress={()=>calcula()} >
                 <Text style={{color: '#fff', fontSize: 25, fontWeight: 'bold'}}>Calcular</Text>
               </TouchableOpacity>
         </View>
          
-
+        <Resultado visible={visible} resultado={resultado} alcool={alcool} gasolina={gasolina} voltar={()=>setVisible(false)}></Resultado>
               
 
         
@@ -66,7 +82,8 @@ const styles = StyleSheet.create({
     margin: 5,
     marginTop:15,
     borderRadius: 5,
-    alignItems: 'center'
+    alignItems: 'center',
+    
   },
   modalContainer:{
     backgroundColor: 'black',
