@@ -34,10 +34,6 @@ estilização de components.
 utilização do componente Nativo Modal
 
 
-
-## Demonstração
-
-https://github.com/Alef-Daniel/demos/blob/master/20230606_034349.mp4
 ## Funcionalidades
 
 O App solicita dois valores de entrada: o preço por litro do Álcool e o Preço por litro da gasolina.
