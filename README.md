@@ -15,6 +15,12 @@ da divisão do primeiro pelo segundo é menor que 0.7. Portanto, é
 mais vantajoso abastecer com álcool.
 
 
+## Demonstração
+
+
+
+
+https://github.com/Alef-Daniel/appGasolinaAlcool/assets/83924026/e7a33c61-eb10-4f40-a48f-fdddcbed7d95
 
 
 
